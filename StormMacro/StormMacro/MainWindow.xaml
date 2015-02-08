@@ -1,0 +1,52 @@
+﻿<Window xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:local="clr-namespace:StormMacro"
+	x:Class="StormMacro.MainWindow"
+	x:Name="Window"
+	Title="MainWindow"
+	Width="640" Height="480" Icon="sol.ico" Closing="Window_Closing">
+
+	<Grid x:Name="LayoutRoot" Background="Black">
+		<ScrollViewer HorizontalAlignment="Right" Margin="0,8,8,8" Width="271">
+            <ListBox x:Name="LB_KeyData">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0,2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="25" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Image Source="{Binding KeyDown}" Stretch="None" Width="24" Height="24" HorizontalAlignment="Left"/>
+                            <TextBlock  Grid.Column="1" Text="{Binding Key}" Margin="5,0,0,0" VerticalAlignment="Center" />
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
+		<Button x:Name="btn_record"  HorizontalAlignment="Left" Height="100" Margin="14,11,0,0" VerticalAlignment="Top" Width="100" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="btn_record_Click">
+			<Image Source="record.png"/>
+			
+			</Button>
+		<Canvas x:Name="MacroPad" Margin="8,204,289,8">
+			<Image Source="stormmacropad.png" Height="230" Canvas.Left="0" Canvas.Top="0" Width="327"/>
+			<Grid x:Name="MacroGrid" Height="199" Canvas.Left="12" Canvas.Top="15" Width="300">
+				<Grid.RowDefinitions>
+					<RowDefinition Height="0.475*"/>
+					<RowDefinition Height="0.525*"/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="0.343*"/>
+					<ColumnDefinition Width="0.337*"/>
+					<ColumnDefinition Width="0.32*"/>
+				</Grid.ColumnDefinitions>
+				<local:MacroButton x:Name="MB_blue" Margin="5" Width="Auto" Height="Auto"/>
+				<local:MacroButton x:Name="MB_white" Margin="5" Width="Auto" Height="Auto" Grid.Row="1" Grid.Column="1"/>
+				<local:MacroButton x:Name="MB_black" Margin="5" Width="Auto" Height="Auto" Grid.Row="1" Grid.Column="2"/>
+				<local:MacroButton x:Name="MB_green" Margin="5" Width="Auto" Height="Auto" Grid.Row="1"/>
+				<local:MacroButton x:Name="MB_red" Margin="5" Width="Auto" Height="Auto" Grid.Column="2"/>
+				<local:MacroButton x:Name="MB_brown" Margin="5" Width="Auto" Height="Auto" Grid.Column="1"/>
+			</Grid>
+		</Canvas>
+		<TextBlock x:Name="tb_status" HorizontalAlignment="Left" Height="29" Margin="14,115,0,0" TextWrapping="Wrap" Text="Idle" VerticalAlignment="Top" Width="329" Foreground="White" FontSize="21.333"/>
+		<Button x:Name="btn_generatecode" Content="Generate Code" HorizontalAlignment="Left" Height="33" Margin="8,158,0,0" VerticalAlignment="Top" Width="106" FontSize="14.667" Click="btn_generatecode_Click"/>
+        <CheckBox x:Name="cb_scancode" Content="Use ScanCodes" HorizontalAlignment="Left" Margin="119,11,0,0" VerticalAlignment="Top" Foreground="#FFF04040"/>
+    </Grid>
+</Window>
